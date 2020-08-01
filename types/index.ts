@@ -1,2 +1,2 @@
 export * from './post';
-export * from './post-id-params';
+export * from './post-id';

@@ -2,7 +2,8 @@ import * as React from 'react';
 import Head from 'next/head';
 import Link from 'next/link';
 // types
-import type {Post} from '../types';
+import type {Post} from 'types';
+import type {GetStaticProps} from 'next';
 // components
 import {Layout, siteTitle, Date} from 'components';
 // libs
@@ -45,7 +46,7 @@ const Home: React.FC<Props> = (props) => (
   </Layout>
 );
 
-export const getStaticProps = async () => {
+export const getStaticProps: GetStaticProps<Props> = async () => {
   const allPostsData = await getSortedPostsData();
   return {
     props: {
