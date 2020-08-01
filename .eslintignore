@@ -1,0 +1,5 @@
+dist/
+web-build/
+web-report/
+
+.vscode/

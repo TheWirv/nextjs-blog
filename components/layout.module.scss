@@ -1,0 +1,28 @@
+$base-margin: 3rem;
+$double-margin: $base-margin * 2;
+
+.container {
+  max-width: 36em;
+  padding: 0 1rem;
+  margin: $base-margin auto $double-margin;
+}
+
+.header {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+}
+
+.headerImage {
+  width: $double-margin;
+  height: $double-margin;
+}
+
+.headerHomeImage {
+  width: $double-margin + 2rem;
+  height: $double-margin + 2rem;
+}
+
+.backToHome {
+  margin: $base-margin 0 0;
+}
