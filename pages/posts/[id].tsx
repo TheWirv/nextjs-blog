@@ -3,7 +3,8 @@ import Head from 'next/head';
 // components
 import {Layout, Date} from 'components';
 // types
-import type {Post as PostType, PostIdParams} from 'types';
+import type {Post as PostType, PostId} from 'types';
+import type {GetStaticProps, GetStaticPaths} from 'next';
 // libs
 import {getAllPostIds, getPostData} from 'lib';
 // styles
@@ -28,7 +29,7 @@ const Post: React.FC<Props> = (props) => (
   </Layout>
 );
 
-export const getStaticProps = async ({params}: PostIdParams) => {
+export const getStaticProps: GetStaticProps<Props, PostId> = async ({params}) => {
   const postData = await getPostData(params.id, true);
   return {
     props: {
@@ -37,8 +38,8 @@ export const getStaticProps = async ({params}: PostIdParams) => {
   };
 };
 
-export const getStaticPaths = async () => {
-  const paths = getAllPostIds();
+export const getStaticPaths: GetStaticPaths<PostId> = async () => {
+  const paths = getAllPostIds().map((id) => ({params: id}));
   return {
     paths,
     fallback: false,

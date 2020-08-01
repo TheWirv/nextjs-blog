@@ -4,7 +4,7 @@ import matter from 'gray-matter';
 import remark from 'remark';
 import html from 'remark-html';
 // types
-import type {Post, PostIdParams} from 'types';
+import type {Post, PostId} from 'types';
 
 type MatterData = Pick<Post, 'date' | 'title'>;
 
@@ -21,14 +21,12 @@ export const getSortedPostsData = async () => {
   return allPostsData.sort((a, b) => (a.date < b.date ? 1 : -1));
 };
 
-export const getAllPostIds = (): PostIdParams[] => {
+export const getAllPostIds = (): PostId[] => {
   // Get file names under /posts
   const fileNames = fs.readdirSync(postsDirectory);
 
   return fileNames.map((fileName) => ({
-    params: {
-      id: fileName.replace(/\.md$/, ''),
-    },
+    id: fileName.replace(/\.md$/, ''),
   }));
 };
 
